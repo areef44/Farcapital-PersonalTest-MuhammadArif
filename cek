@@ -1,0 +1,92 @@
+  <div class="w-75 h-3">
+      <h5>Pengecekan Kondisi Kesehatan</h5>
+      <form action={{ route('donor.store') }} method="post">
+          @csrf
+          <div>
+              <input type="checkbox" name="isHepatitis" value="isHepatitis">
+              <label for="isHepatitis"> Pernah menderita Hepatitis B </label><br>
+              <input type="checkbox" name="isHepatitisContact" value="isHepatitisContact">
+              <label for="isHepatitisContact"> Dalam jangka waktu 6 bulan sesudah kontak erat dengan penderita hepatitis</label><br>
+              <input type="checkbox" name="isTransfusion" value="isTransfusion">
+              <label for="isTransfusion">Dalam jangka waktu 6 bulan sesudah mendapat transfusi</label><br>
+              <input type="checkbox" name="isTatto" value="isTatto">
+              <label for="isTatto"> Dalam jangka waktu 6 bulan sesudah tato/tindik telinga </label><br>
+              <input type="checkbox" name="isTeethOperation" value="isTeethOperation">
+              <label for="isTeethOperation"> Dalam jangka waktu 72 jam sesudah operasi gigi</label><br>
+              <input type="checkbox" name="isSmallOperation" value="isSmallOperation">
+              <label for="isSmallOperation">Dalam jangka waktu 6 bulan sesudah operasi kecil</label><br>
+              <input type="checkbox" name="isMediumOperation" value="isMediumOperation">
+              <label for="isMediumOperation"> Dalam jangka waktu 12 bulan sesudah operasi kecil </label><br>
+              <input type="checkbox" name="isBigVaccine" value="isBigVaccine">
+              <label for="isBigVaccine">Dalam jangka waktu 24 jam sesudah vaksinasi polio, influenza, kolera, stetanus dipteria atau profilaksis</label><br>
+              <input type="checkbox" name="isSmallVaccine" value="isSmallVaccine">
+              <label for="isSmallVaccine">Dalam jangka waktu 2 minggu sesudah vaksinasi virus hidup parotitis epidemica, measles dan tetanus toxin</label><br>
+              <input type="checkbox" name="isInject" value="isInject">
+              <label for="isInject"> Dalam jangka waktu 1 tahun sesudah injeksi terakhir imunisasi rabies therapeutic </label><br>
+              <input type="checkbox" name="isAlergic" value="isAlergic">
+              <label for="isAlergic"> Dalam jangka waktu 1 minggu sesudah gejala alergi menghilang</label><br>
+              <input type="checkbox" name="isSkin" value="isSkin">
+              <label for="isSkin">Dalam jangka waktu 1 tahun sesudah transplantasi kulit</label><br>
+              <input type="checkbox" name="isPregnant" value="isPregnant">
+              <label for="isPregnant"> Sedang hamil dan dalam jangka waktu 6 bulan sesudah persalinan </label><br>
+              <input type="checkbox" name="isBreastFeed" value="isBreastFeed">
+              <label for="isBreastFeed"> Sedang menyusui</label><br>
+              <input type="checkbox" name="isDrug" value="isDrug">
+              <label for="isDrug">Ketergantungan obat</label><br>
+              <input type="checkbox" name="isAlcoholic" value="isAlcoholic">
+              <label for="isAlcoholic"> Alkoholisme akut dan kronis </label><br>
+              <input type="checkbox" name="isSifilis" value="isSifilis">
+              <label for="isSifilis"> Mengidap Sifilis</label><br>
+              <input type="checkbox" name="isTuberculosis" value="isTuberculosis">
+              <label for="isTuberculosis">Menderita Tuberkulosis secara klinis</label><br>
+              <input type="checkbox" name="isEpileption" value="isEpileption">
+              <label for="isEpileption"> Menderita epilepsi dan sering kejang </label><br>
+              <input type="checkbox" name="isSkinVena" value="isSkinVena">
+              <label for="isSkinVena">Menderita penyakit kulit pada vena (pembuluh darah balik) yang akan ditusuk</label><br>
+              <input type="checkbox" name="isThalasemia" value="isThalasemia">
+              <label for="isThalasemia">Mempunyai kecenderungan perdarahan atau penyakit darah, misalnya thalasemia</label><br>
+              <input type="checkbox" name="isLgbt" value="isLgbt">
+              <label for="isLgbt"> Seseorang yang termasuk kelompok masyarakat yang berisiko mendapatkan HIV dan AIDS <br> (homoseks, morfinis, seks bebas dan pemakai jarum suntik tidak steril)</label><br>
+              <input type="checkbox" name="isAids" value="isAids">
+              <label for="isAids"> Pengidap HIV dan AIDS menurut hasil pemeriksaan saat donor darah</label><br>
+              <input type="checkbox" name="isHaid" value="isHaid">
+              <label for="isHaid"> Syarat donor darah untuk perempuan, sebaiknya sedang tidak dalam masa haid</label><br>
+              <br>
+              <button type="submit">Submit</button>
+      </form>
+  </div>
+  </div>
+  </div>
+
+
+
+
+<div class="d-flex">
+
+    <div class="w-25 h-3 px-4">
+        <h5>Data Identitas Pribadi</h5>
+        <div>
+            <label for="">Nama : </label>
+            <input type="text" value={{ $users->name }}>
+        </div>
+        <div>
+            <label for="">Tanggal Lahir : </label>
+            <input type="date" value={{ $users->birth_date}}>
+        </div>
+
+        <div>
+            <label for="">Jenis Kelamin : </label><br>
+            <input type="radio" name="gender" {{ $users->gender == 'l' ? 'checked' : '' }}>
+            <label for="">Laki-Laki</label><br>
+            <input type="radio" name="gender" {{ $users->gender == 'p' ? 'checked' : '' }}>
+            <label for="">Perempuan</label><br>
+        </div>
+        <div>
+            <label for="">Alamat : </label><br>
+            <textarea name="" id="" cols="30" rows="10">{{ $users->alamat}}</textarea>
+        </div>
+    </div>
+
+
+
+</div>

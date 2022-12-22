@@ -5,9 +5,15 @@
 
 @section('content')
 
-<h2>Selamat datang di halaman kami</h2>
-<p>Apakah anda ingin menjadi pendonor ?<p>
-<p>Silakan Mengisi biodata<p>
-<a href="{{ "/create" }}">Daftar</a>
+<div class="text-center align-center">
+<h2>Selamat datang di Palang Merah Negara Wakanda</h2>
+<h3>Apakah anda ingin berkontribusi?</h3>
+<h4>Sudah Punya Akun</h4><span><a href={{ route('login') }}>Login</a>
+<h4>Belum Punya Akun</h4><span><a href={{ route('create') }}>Register</a>
+</div>
+
+
+
+
 
 @endsection

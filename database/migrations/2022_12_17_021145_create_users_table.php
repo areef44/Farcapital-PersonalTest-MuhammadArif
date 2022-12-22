@@ -13,12 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('donors', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 50);
-            $table->tinyInteger('gender');
+            $table->string('name', 50);
             $table->date('birth_date');
+            $table->enum('gender', ["l", "p"]);
             $table->text('alamat');
+            $table->string('email')->unique();
+            $table->string('password');
+
+            //inisialisasi foreign key ke table pendonor
+            $table->tinyInteger("role_id")->default(1);
+            // $table->foreign("role_id")->references("id")->on("roles");
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donor');
+        Schema::dropIfExists('officer');
     }
 };

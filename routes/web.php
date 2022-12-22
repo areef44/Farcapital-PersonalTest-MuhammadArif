@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DonorController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +16,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
 
-Route::get('/home', [DonorController::class, 'home'])->name('home');
+// Route::get('/users/show/{id}', [UsersController::class, 'show'])->name('show');
 
-Route::get('/create', [DonorController::class, 'create'])->name('create');
+Route::get('/create', [UsersController::class, 'create'])->name('create');
 
-Route::post('/store', [DonorController::class, 'store'])->name('store');
+Route::post('/store', [UsersController::class, 'store'])->name('store');
 
 // Route::get('/list', [DonorController::class, 'list'])->name('list');
 
@@ -33,37 +34,40 @@ Route::post('/store', [DonorController::class, 'store'])->name('store');
 
 
 
-// Route::prefix('student')
-//     ->name('student.')
-//     ->controller(DonorController::class)
-//     ->group(function () {
-//         Route::get('/', 'index')->name('index'); // halaman index
-//         Route::get('/show/{student}', 'show')->name('show');
-//         Route::get('/edit/{student}', 'edit')->name('edit');
-//         Route::get('/create', 'create')->name('create');
-//         Route::post('/store', 'store')->name('store');
-//         Route::put('/update/{student}', 'update')->name('update');
-//         Route::delete('/destroy/{student}', 'destroy')->name('destroy');
-//     });
-
-
-Route::middleware(['withAuth'])->prefix('donor')
+Route::middleware(['withAuth'])->prefix('petugas')
     ->controller(DonorController::class)
-    ->name('donor.')->group(
+    ->name('petugas.')->group(
         function () {
+            Route::get('dashboard', 'index')->name('dashboard');
 
-            Route::get('/list', 'list')->name('list');
+            Route::get('edit/{donors}', 'edit')->name('edit');
 
-            Route::get('/detail{id}', 'detail')->name('detail');
+            Route::delete('destroy/{donors}', 'destroy')->name('destroy');
 
-            Route::post('/destroy', 'destroy')->name('destroy');
+            Route::post('update/{donors}', 'update')->name('update');
         }
 
     );
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['withAuth'])->name('dashboard');
+
+Route::middleware(['usersAuth'])->prefix('users')
+    ->controller(UsersController::class)
+    ->name('users.')->group(
+        function () {
+
+
+            Route::get('dashboard', 'index')->name('dashboard');
+
+            Route::post('update/{users}', 'update')->name('update');
+
+            Route::get('edit/{users}', 'edit')->name('edit');
+        }
+
+    );
+
+// Route::get('/users', function () {
+//     return view('users.v_users');
+// })->middleware(['withAuth'])->name('v_users');
 
 
 Route::any("/login", [AuthController::class, "login"])

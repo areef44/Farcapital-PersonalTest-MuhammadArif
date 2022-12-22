@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class WithAuth
+class usersAuth
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class WithAuth
     {
         if (!session()->isStarted()) session()->start();
         // dd(session()->get("logged"));
-        if (!session()->get("logged", false)) {
+        if (!session()->get("logged-user", false)) {
             return redirect()
                 ->route("login")
                 ->withErrors([

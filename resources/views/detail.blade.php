@@ -20,7 +20,7 @@
               </h2>
 
 
-              <a href="/list">Kembali</a>
+              <a href={{ route('donor.list') }}>Kembali</a>
                
 
 

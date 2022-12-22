@@ -4,6 +4,7 @@ namespace App\Http;
 
 
 use App\Http\Middleware\NoAuth;
+use App\Http\Middleware\usersAuth;
 use App\Http\Middleware\WithAuth;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -68,5 +69,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'withAuth' => WithAuth::class,
         'noAuth' => NoAuth::class,
+        'usersAuth' => usersAuth::class
     ];
 }

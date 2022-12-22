@@ -1,6 +1,6 @@
 @extends('templates.template')
 
-@section('title', 'Tambah Pendonor')
+@section('title', 'List data Pendonor')
 
 @section('content')
 
@@ -36,14 +36,17 @@
             {{ $donor->alamat }}
         </td>
          <td>
-            <a href="detail/{{ $donor->id }}">details</a>
-      
-           <a href="destroy/{{ $donor->id }}" class="btn btn-danger">Hapus</a>
+            <form action="{{ route('donor.destroy',$donor->id) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <a href={{ route('donor.detail',$donor->id) }}>details</a>
+            <button type="submit">Hapus</button>
+            </form>
         </td>
     </tr>
        @endforeach
     </tbody>
-    <a href="/dashboard" class="btn btn-danger">Kembali</a>
+    <a href={{ route('dashboard') }} class="btn btn-danger">Kembali</a>
 </table>
 
 {{-- table>thead>tr>th*6 --}}
