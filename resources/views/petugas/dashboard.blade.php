@@ -18,7 +18,8 @@
             <th>Diastole</th>
             <th>Denyut Nadi</th>
             <th>Hemoglobin</th>
-            <th>Apakah Sudah Memenuhi Syarat</th>
+            <th>Syarat Sehat</th>
+            <th>Syarat Fisik</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -54,6 +55,9 @@
          <td>
             {{ $donor->hemoglobin }}
         </td>
+        <td>
+            {{ $donor->users->status }}
+        </td>
          <td>
             {{ $donor->status_fisik }}
         </td>
@@ -76,7 +80,7 @@
 </table>
 
 
-<h3>verifikasi Data Pendonor</h3>
-{{-- <a href={{ route('petugas.edit')}}></a> --}}
+<h3>Tambah Verifikasi Data Pendonor</h3>
+<a href={{ route('petugas.tambah')}}>Tambah</a>
 
 @endsection

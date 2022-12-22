@@ -17,6 +17,7 @@
         @yield('petugas')
         @yield('user')
         @yield('edit')
+        @yield('verifikasi')
 
     </main>
 

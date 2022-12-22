@@ -16,18 +16,15 @@ return new class extends Migration
         Schema::create('donors', function (Blueprint $table) {
             $table->id();
             //persyaratan untuk kesehatan pendonor
-            $table->integer('izin');
-            $table->decimal('weight')->nullable();
-            $table->decimal('temperature')->nullable();
-            $table->integer('blood')->nullable();
-            $table->integer('sistole')->nullable();
-            $table->integer('diastole')->nullable();
-            $table->decimal('denyut')->nullable();
-            $table->decimal('hemoglobin')->nullable();
+            $table->enum('izin', ["1", "0"]);
+            $table->enum('weight', ["1", "0"])->nullable();
+            $table->enum('temperature', ["1", "0"])->nullable();
+            $table->enum('sistole', ["1", "0"])->nullable();
+            $table->enum('diastole', ["1", "0"])->nullable();
+            $table->enum('denyut', ["1", "0"])->nullable();
+            $table->enum('hemoglobin', ["1", "0"])->nullable();
             $table->string('status_fisik')->nullable();
-            //relasi ke tabel users
             $table->tinyInteger("user_id")->default(1);
-            $table->foreign("user_id")->references("id")->on("users");
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 })->name('home');
 
@@ -39,6 +39,10 @@ Route::middleware(['withAuth'])->prefix('petugas')
     ->name('petugas.')->group(
         function () {
             Route::get('dashboard', 'index')->name('dashboard');
+
+            Route::get('tambah', 'create')->name('tambah');
+
+            Route::post('store', 'store')->name('store');
 
             Route::get('edit/{donors}', 'edit')->name('edit');
 
