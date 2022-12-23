@@ -96,10 +96,33 @@
 
   <script>
 
+    function umurUser(tgl_ultah){
+
+        var dob = new Date(tgl_ultah);  
+        //calculate month difference from current date in time  
+        var month_diff = Date.now() - dob.getTime();  
+          
+        //convert the calculated difference in date format  
+        var age_dt = new Date(month_diff);   
+          
+        //extract year from date      
+        var year = age_dt.getUTCFullYear();  
+          
+        //now calculate the age of the user  
+        var age = Math.abs(year - 1970);  
+          
+        //display the calculated age  
+        console.log("Age of the date entered: " + age + " years");  
+        return age;
+    }
+
     $("#user_id").on("change", function(){
         let umur = $(this).find(':selected').attr('data-umur')
-        $("#umur").val(umur)
+        $("#umur").val(umurUser(umur))
+        console.log(umur)
     })
+
+
     
   </script>
 

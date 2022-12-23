@@ -15,12 +15,6 @@ class DonorController extends Controller
     {
 
         $users = Users::all();
-        // ->where('id', session()->get('id_user'))
-        // ->first();
-
-
-
-
         $donors = Donor::all();
         $donors = $donors->map(function ($donor) use ($users) {
             $donor['user'] = $users->where('id', $donor['id'])->first();
@@ -52,7 +46,7 @@ class DonorController extends Controller
         } else {
             $status_fisik = "Layak";
         }
-        dd($request);
+        // dd($request);
 
         $payload = [
             'izin' => $request->izin,
@@ -74,17 +68,21 @@ class DonorController extends Controller
 
     public function edit($id)
     {
-        $donor = Donor::find($id);
-        $users = Users::all();
+        // $donors = Donor::find($id);
+        $donors = Donor::where('id', $id)->first();
+        $user = Users::where('id', $donors->user_id)->first();
+        // dump($user);
+        // die;
         return view('petugas.edit', [
-            'donor' => $donor,
-            'users' => $users
+            'donors' => $donors,
+            'user' => $user
         ]);
     }
 
 
     public function update(Request $request, $id)
     {
+
 
         $jml = $request->izin + $request->weight + $request->temperature + $request->sistole + $request->diastole + $request->denyut + $request->hemoglobin;
 
@@ -103,14 +101,12 @@ class DonorController extends Controller
             'diastole' => $request->diastole,
             'denyut' => $request->denyut,
             'hemoglobin' => $request->hemoglobin,
-            'user_id' => $request->user_id,
             'status_fisik' => $status_fisik
         ];
 
-        // dd($validated);
+        // dd($payload);
         $donor = Donor::find($id);
-        $donor->fill($payload);
-        $donor->save();
+        $donor->update($payload);
         return redirect()->route('petugas.dashboard');
     }
 

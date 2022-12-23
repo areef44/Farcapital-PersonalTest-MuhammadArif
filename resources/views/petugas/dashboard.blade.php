@@ -63,9 +63,9 @@
             {{ $donor->status_fisik }}
         </td>
         <td>
+            <button><a href={{ route('petugas.edit',$donor->id )}}>Edit</a></button>
             
             <form action="{{ route('petugas.destroy',$donor->id) }}" method="post">
-            <button><a href={{ route('petugas.edit',$donor->id )}}>Edit</a></button>
             @csrf
             @method('DELETE')
             <button type="submit">Hapus</button>
@@ -82,8 +82,8 @@
 
 
 <h5>Tambah Verifikasi Data Pendonor</h5>
-<a href={{ route('petugas.tambah')}}>Tambah</a>
-<h5>Tambah Verifikasi Data Pendonor</h5>
-<a href={{ route('logout')}}>Log Out</a>
+<a href={{ route('petugas.tambah')}}><button>Tambah</button></a>
+<h5>Apakah Anda Ingin Keluar</h5>
+<a href={{ route('logout')}}><button>Log Out</button></a>
 
 @endsection
