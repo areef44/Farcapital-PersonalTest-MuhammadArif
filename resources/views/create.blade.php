@@ -13,9 +13,12 @@
     <input type="text" name="name" required>
     </div>
     
-    <div>
-    <label for="gender"> Jenis Kelamin : </label><br>
-    <input type="text" name="gender">
+     <div>
+            <label for="">Jenis Kelamin : </label><br>
+            <input type="radio" name="gender" value="l">
+            <label for="">Laki-Laki</label><br>
+            <input type="radio" name="gender" value="p">
+            <label for="">Perempuan</label><br>
     </div>
    
     <div>

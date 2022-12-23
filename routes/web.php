@@ -44,7 +44,7 @@ Route::middleware(['withAuth'])->prefix('petugas')
 
             Route::post('store', 'store')->name('store');
 
-            Route::get('edit/{donors}', 'edit')->name('edit');
+            Route::get('edit/{id}', 'edit')->name('edit');
 
             Route::delete('destroy/{donors}', 'destroy')->name('destroy');
 

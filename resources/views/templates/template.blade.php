@@ -18,6 +18,7 @@
         @yield('user')
         @yield('edit')
         @yield('verifikasi')
+        @yield('editpendonor')
 
     </main>
 

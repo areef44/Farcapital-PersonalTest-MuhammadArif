@@ -27,12 +27,13 @@
     {{-- TODO: loop all pendonor data --}}
     <tbody>
     @foreach($donors as $donor)
+    {{-- @dd($donor->users) --}}
        <tr>
         <td>
             {{ $loop->iteration }}
         </td>
         <td>
-            {{ $donor->users->name }}
+            @if (isset($donor->users->name)) {{ $donor->users->name }} @endif
         </td>
         <td>
             {{ $donor->izin }}
@@ -56,7 +57,7 @@
             {{ $donor->hemoglobin }}
         </td>
         <td>
-            {{ $donor->users->status }}
+            @if (isset($donor->users->status)) {{ $donor->users->status }} @endif
         </td>
          <td>
             {{ $donor->status_fisik }}
@@ -80,7 +81,9 @@
 </table>
 
 
-<h3>Tambah Verifikasi Data Pendonor</h3>
+<h5>Tambah Verifikasi Data Pendonor</h5>
 <a href={{ route('petugas.tambah')}}>Tambah</a>
+<h5>Tambah Verifikasi Data Pendonor</h5>
+<a href={{ route('logout')}}>Log Out</a>
 
 @endsection
